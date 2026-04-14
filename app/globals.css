@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --accent: #c9fa49;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/*
+ * Space for fixed floating CTA above the footer (body padding used to sit
+ * below the footer and showed as a white strip). Safe-area for notched phones.
+ */
+main.flex-1 {
+  padding-bottom: max(
+    5.25rem,
+    calc(4.5rem + env(safe-area-inset-bottom, 0px))
+  );
+}
+
+@media (min-width: 640px) {
+  main.flex-1 {
+    padding-bottom: max(
+      6rem,
+      calc(5.25rem + env(safe-area-inset-bottom, 0px))
+    );
+  }
+}
+
+/*
+ * Lime fill only inside each character; black appears only as an outline
+ * (text-shadow), not as the glyph fill.
+ */
+@keyframes recent-order-line-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.recent-order-line-enter {
+  animation: recent-order-line-enter 0.55s ease-out;
+}
+
+@keyframes recent-order-glow {
+  from {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.12),
+      0 0 12px rgba(201, 250, 73, 0.35);
+  }
+  to {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.18),
+      0 0 22px rgba(201, 250, 73, 0.55);
+  }
+}
+
+.recent-order-attention {
+  animation: recent-order-glow 2.4s ease-in-out infinite alternate;
+}
+
+.text-accent-outlined {
+  color: #c9fa49;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000,
+    1px 1px 0 #000000,
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+    -1px -1px 0 #000000,
+    2px 0 0 #000000,
+    -2px 0 0 #000000,
+    0 2px 0 #000000,
+    0 -2px 0 #000000,
+    2px 2px 0 #000000,
+    2px -2px 0 #000000,
+    -2px 2px 0 #000000,
+    -2px -2px 0 #000000;
+}
